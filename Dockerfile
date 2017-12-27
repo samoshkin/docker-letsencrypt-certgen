@@ -1,4 +1,4 @@
-FROM certbot/certbot
+FROM certbot/certbot:v0.20.0
 
 ENV \
   DOMAINS="" \
@@ -20,7 +20,7 @@ ENV \
 
 # Install acme.sh client
 RUN apk add --update curl openssl socat bash \
-  && curl -s https://get.acme.sh | sh \
+  && curl -s https://raw.githubusercontent.com/Neilpang/acme.sh/7b8a82ce90c29cb50e88a33a3b61ca0f08469f64/acme.sh | INSTALLONLINE=1 sh \
   && rm -rf /var/cache/apk/*
 
 COPY scripts /le-certgen/scripts

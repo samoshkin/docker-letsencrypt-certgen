@@ -55,7 +55,7 @@ docker run \
   -p 80:80 \
   -e DOMAINS=foobbz.site \
   --rm \
-  samoshkin/letsencrypt-certgen issue
+  asamoshkin/letsencrypt-certgen issue
 ```
 
 Once done, container stops and is automatically removed (--rm). Certificates, keys and related files are stored in `/var/ssl/foobbz.site`:
@@ -119,7 +119,7 @@ docker run \
   -p 80:80 \
   -e DOMAINS=/etc/domains.txt \
   --rm \
-  samoshkin/letsencrypt-certgen issue
+  asamoshkin/letsencrypt-certgen issue
 ```
 
 
@@ -166,7 +166,7 @@ docker run \
   -p 80:80 \
   -e DOMAINS=foobbz.site \
   --rm \
-  samoshkin/letsencrypt-certgen issue
+  asamoshkin/letsencrypt-certgen issue
 ```
 
 `/etc/acme` and `/etc/letsencrypt` are just internal storages of `acme.sh` and `certbot` clients, which are used under the hood. They contain certificates, keys, various settings, but we don't use them directly as their structure varies and is a subject to change. Therefore, `/var/ssl` volume serves as a target drop location for certificates and keys. You should mount `/var/ssl` into any container, that needs certificates (e.g. Nginx).
@@ -184,7 +184,7 @@ docker run \
   -e DOMAINS=foobbz.site \
   -e FORCE_RENEWAL=1 \
   --rm \
-  samoshkin/letsencrypt-certgen renew
+  asamoshkin/letsencrypt-certgen renew
 ```
 
 Use `revoke` or `delete` commands to trigger respective actions. Use `$DOMAINS` variable to specify particular domain to revoke or delete. It's ok to tell just common name, no need to specify all alternative names, as you did for `issue` command.
@@ -244,7 +244,7 @@ docker run \
   -e DOMAINS=foobbz.site \
   -e CHALLENGE_MODE=webroot \
   --rm \
-  samoshkin/letsencrypt-certgen renew
+  asamoshkin/letsencrypt-certgen renew
 ```
 
 Main use case for `webroot` method, is the ability to renew certificates, without a need to stop you existing web server and running applications.
@@ -268,7 +268,7 @@ docker run \
   -e RSA_ENABLED=0
   -e ECDSA_KEY_LENGTH=ec-384
   --rm \
-  samoshkin/letsencrypt-certgen renew
+  asamoshkin/letsencrypt-certgen renew
 ```
 
 Note, that ECDSA certificates are still signed by LetsEncrypt's RSA certificate chain (Fake LE Intermediate X1, Fake LE Root X1). LetsEncrypt does not use dedicated EC certificates to sign for complete EC chain.
@@ -305,7 +305,7 @@ docker run \
   -e DOMAINS=foobbz.site \
   -e SSL_GROUP_ID=1561
   --rm \
-  samoshkin/letsencrypt-certgen renew
+  asamoshkin/letsencrypt-certgen renew
 ```
 
 Check out permissions and ownership of created certificates:
@@ -361,5 +361,3 @@ volumes:
   ssl:
   acme_challenge_webroot:
 ```
-
-
