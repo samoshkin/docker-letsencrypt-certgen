@@ -31,7 +31,7 @@ build_challenge_mode_args(){
   local args="";
 
   if [ "$mode" == "webroot" ]; then
-    args="--webroot -w \"$webroot_path\""
+    args="--webroot -w $webroot_path"
   fi
   if [ "$mode" == "standalone" ]; then
     args="--standalone"
