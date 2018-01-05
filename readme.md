@@ -1,9 +1,11 @@
 docker-letsencrypt-certgen
 ==========================
 
-**[Work in progress]**
+Docker image allowing to generate, renew, revoke RSA and/or ECDSA SSL certificates from [LetsEncrypt CA](https://letsencrypt.org/) using [certbot](https://certbot.eff.org/) and [acme.sh](https://github.com/Neilpang/acme.sh) clients in automated fashion.
 
-Generate, renew, revoke RSA and/or ECDSA SSL certificates from [LetsEncrypt CA](https://letsencrypt.org/) using [certbot](https://certbot.eff.org/) and [acme.sh](https://github.com/Neilpang/acme.sh) clients in automated fashion.
+See also my blog post [RSA and ECDSA hybrid Nginx setup with LetsEncrypt certificates](https://medium.com/@alexeysamoshkin/rsa-and-ecdsa-hybrid-nginx-setup-with-letsencrypt-certificates-ee422695d7d3) that shows a primer for this docker image.
+
+![logo](https://user-images.githubusercontent.com/768858/34629566-42e2a3f8-f271-11e7-9387-6e3662a67148.png)
 
 Goal
 ----
@@ -272,6 +274,8 @@ docker run \
 ```
 
 Note, that ECDSA certificates are still signed by LetsEncrypt's RSA certificate chain (Fake LE Intermediate X1, Fake LE Root X1). LetsEncrypt does not use dedicated EC certificates to sign for complete EC chain.
+
+You might also request certificate with [OCSP must-staple](https://scotthelme.co.uk/ocsp-must-staple/) extension, by passing `MUST_STAPLE=1` environment variable. Yes, LetsEncrypt supports issuing certificates with OCSP must-staple flag.
 
 Using LetsEncrypt staging server
 --------------------------------

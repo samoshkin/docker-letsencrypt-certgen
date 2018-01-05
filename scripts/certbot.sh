@@ -58,6 +58,10 @@ issue_or_renew_rsa_cert(){
     args="$args --keep-until-expiring";
   fi
 
+  if [ "$MUST_STAPLE" -eq 1 ]; then
+    args="$args --must-staple";
+  fi
+
   certbot certonly \
     --non-interactive \
     --cert-name "$cert_name" \

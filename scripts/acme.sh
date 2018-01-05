@@ -60,6 +60,10 @@ issue_esdca_cert(){
     args="$args --staging";
   fi
 
+  if [ "$MUST_STAPLE" -eq 1 ]; then
+    args="$args --ocsp-must-staple";
+  fi
+
   set +e
   acme.sh \
     --issue \
@@ -88,6 +92,10 @@ renew_ecdsa_cert(){
   fi
   if [ "$FORCE_RENEWAL" -eq 1 ]; then 
     args="$args --force";
+  fi
+  
+  if [ "$MUST_STAPLE" -eq 1 ]; then
+    args="$args --ocsp-must-staple";
   fi
 
   set +e

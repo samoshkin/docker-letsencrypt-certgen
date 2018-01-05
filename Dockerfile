@@ -10,6 +10,7 @@ ENV \
   STAGING=1 \
   FORCE_RENEWAL=0 \
   SSL_GROUP_ID=1337 \
+  MUST_STAPLE=0 \
   VERBOSE=0
 
 # internal variables not intended for override
