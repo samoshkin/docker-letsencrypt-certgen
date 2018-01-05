@@ -1,7 +1,7 @@
 docker-letsencrypt-certgen
 ==========================
 
-Docker image allowing to generate, renew, revoke RSA and/or ECDSA SSL certificates from [LetsEncrypt CA](https://letsencrypt.org/) using [certbot](https://certbot.eff.org/) and [acme.sh](https://github.com/Neilpang/acme.sh) clients in automated fashion.
+[Docker image](https://hub.docker.com/r/asamoshkin/letsencrypt-certgen/) allowing to generate, renew, revoke RSA and/or ECDSA SSL certificates from [LetsEncrypt CA](https://letsencrypt.org/) using [certbot](https://certbot.eff.org/) and [acme.sh](https://github.com/Neilpang/acme.sh) clients in automated fashion.
 
 See also my blog post [RSA and ECDSA hybrid Nginx setup with LetsEncrypt certificates](https://medium.com/@alexeysamoshkin/rsa-and-ecdsa-hybrid-nginx-setup-with-letsencrypt-certificates-ee422695d7d3) that shows a primer for this docker image.
 
